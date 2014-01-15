@@ -6,6 +6,7 @@ Version 0.9 (BETA)
 Cli tools to use Bigstep Infrastructure from the command line. 
 
 PHP is needed to run this tool set. 
+Also BSI_ENDPOINT_URL and BSI_API_KEY environment variables need to be set before anything can be done with this tool set. 
 
 Usage:
 ./bsi <command>
