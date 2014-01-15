@@ -128,16 +128,19 @@ array (
 
 
 ~/code/bsi-cli-tools $ ./bsi infrastructure_deploy 68
-Deploying changesarray (
+Deploying changes
+```json
+array (
   'infrastructure_id' => 68,
   'user_id_owner' => 2,
   'infrastructure_label' => 'test',
   'infrastructure_description' => '',
   'infrastructure_ongoing_deployments_counter' => 0,
 )
+```
 
 
-###Check status of provisioning operations
+Check status of provisioning operations
 
 :~/code/bsi-cli-tools $ ./bsi infrastructure_get 68
 Infrastructure test(68)
