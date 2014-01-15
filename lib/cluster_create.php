@@ -7,13 +7,13 @@ global $bsi;
 if($argc!=9)
 	die("Syntax: <infrastructure_id> <cluster_name> <node_count> <RAM> <Core_MHZ> <processor_count> <processor_core_count> <LUN_template_name>\n");
 
-$nInfrastructureID=$argv[1];
+$nInfrastructureID=(int)$argv[1];
 $strClusterName=$argv[2];
-$nNodeCount=$argv[3];
-$nRAM=$argv[4];
-$nCoreMhz=$argv[5];
-$nProcessorCount=$argv[6];
-$nProcessorCoreCount=$argv[7];
+$nNodeCount=(int)$argv[3];
+$nRAM=(int)$argv[4];
+$nCoreMhz=(int)$argv[5];
+$nProcessorCount=(int)$argv[6];
+$nProcessorCoreCount=(int)$argv[7];
 $strLunTemplateName=$argv[8];
 
 $objCluster = array(
