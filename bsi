@@ -1,0 +1,44 @@
+#/bin/bash
+#BSI CLI Tools. Bigstep LTD all rights reserved.
+#version 0.1
+
+
+CDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ -z $BSI_ENDPOINT_URL ] || [ -z $BSI_API_KEY ] ; then
+	echo "BSI_ENDPOINT_URL and BSI_API_KEY environment variables must be set before you can use the CLI tools.";
+	exit -1;
+fi
+
+LIB=$CDIR/lib
+
+if [ ! -d $LIB ]; then
+	echo "BSI CLI LIB must be in the same directory as the cli command (for the non rpm or dpkg versions)."
+	exit 1;
+fi
+
+
+PHP_PATH=`which php`
+if [ -z $PHP_PATH ]; then
+	echo "PHP must be installed to run the CLI tools. We use \"which php\" to look for it.". 
+	exit 2;
+fi
+
+
+CMD=$1 
+
+if [ -z $CMD ]; then
+	CMD="help"
+fi
+
+EXP_CMD=$LIB/$CMD.php
+
+if [ ! -f $EXP_CMD ]; then
+	echo "Command $CMD not found. Use $0 help for available commands.";
+	exit 3;
+fi
+
+$PHP_PATH $EXP_CMD $2 $3 $4 $5 $6 $7 $8 $9
+
+
+
