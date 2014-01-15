@@ -129,7 +129,7 @@ array (
 
 ~/code/bsi-cli-tools $ ./bsi infrastructure_deploy 68
 Deploying changes
-```json
+```php
 array (
   'infrastructure_id' => 68,
   'user_id_owner' => 2,
