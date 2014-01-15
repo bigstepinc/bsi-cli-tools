@@ -5,6 +5,7 @@ BSI CLI Tools.
 =============
 
 Bigstep Infrastructure CLI Tools to control the infrastructure. 
+Syntax: bsi <command> [command params]
 
 Available commands:\n";
 
@@ -51,3 +52,5 @@ foreach($arrCommands as $strCommand=>$strDoc)
 {
 	printf("%-27s %s\n",$strCommand,$strDoc);
 }
+
+echo "For help with individual commands run the command with no params\n\n";

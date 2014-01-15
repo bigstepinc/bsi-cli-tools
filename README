@@ -5,6 +5,12 @@ Version 0.9 (BETA)
 
 Cli tools to use Bigstep Infrastructure from the command line. 
 
+PHP is needed to run this tool set. 
+
+Usage:
+./bsi <command>
+
+
 Available commands:
 cluster_create              Create a cluster with a number of nodes with a specific configuration.
 cluster_contract            Contract a cluster (i.e. reduce the number of nodes).
