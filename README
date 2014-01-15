@@ -129,7 +129,6 @@ array (
 
 ~/code/bsi-cli-tools $ ./bsi infrastructure_deploy 68
 Deploying changes
-```php
 array (
   'infrastructure_id' => 68,
   'user_id_owner' => 2,
@@ -137,7 +136,6 @@ array (
   'infrastructure_description' => '',
   'infrastructure_ongoing_deployments_counter' => 0,
 )
-```
 
 
 Check status of provisioning operations
