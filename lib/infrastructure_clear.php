@@ -87,7 +87,7 @@ printf("%5s %-40s %3s\n",'ID','Name','Type','Status');
 
  foreach($arrObjects['rows'] as $objElement)
  {
-		if($arrObjects['network_type']=='wan' || $arrObjects['network_type']=='san')
+		if($objElement['network_type']=='wan' || $objElement['network_type']=='san')
 			continue;
 		echo "Deleting network ".$objElement['network_id']." ". $objElement['network_label']."\n";	
 		$bsi->network_delete($objElement['network_id']);
