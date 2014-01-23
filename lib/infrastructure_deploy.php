@@ -22,7 +22,7 @@ $bsi->infrastructure_deploy($nInfrastructureID);
 
 $objInfrastructure = $bsi->infrastructure_get($nInfrastructureID);
 
-echo "Deploying changes";
+echo "Deploying changes. You can stop this at any time, the provisioning will continue on the server side.\n";
 
 while($objInfrastructure["infrastructure_ongoing_deployments_counter"] != "0")
 {
