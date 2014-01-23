@@ -14,7 +14,7 @@ define("BSI_ENDPOINT_URL",getenv("BSI_ENDPOINT_URL"));
 define("BSI_API_KEY",getenv("BSI_API_KEY"));
 
 
-$arrBSIKey=split(":", BSI_API_KEY , 2);
+$arrBSIKey=explode(":", BSI_API_KEY , 2);
 $nBillableUserID=$arrBSIKey[0];
 
 
