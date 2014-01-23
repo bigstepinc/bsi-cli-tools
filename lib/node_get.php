@@ -1,6 +1,5 @@
 <?php
 
-require_once("BSI/BSI.php");
 require_once("config.php");
 
 
