@@ -19,6 +19,7 @@ $strLunTemplateName=$argv[8];
 $objCluster = array(
 	"cluster_id"=>NULL,
 	"cluster_label" => $strClusterName,
+	"cluster_id_name" => $strClusterName,
 	"cluster_ipv4_public_auto_create_and_allocate" => true,
 	"cluster_node_count" => $nNodeCount,
 	"cluster_ram_gbytes" => $nRAM,

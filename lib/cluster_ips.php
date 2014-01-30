@@ -22,7 +22,7 @@ foreach($arrNodes as $objNode)
 	$nNodeID=$objNode['node_id'];
 	$arrNodeIPs=$bsi->node_ips($nNodeID);
 
-	echo "Node ".$nNodeID." has ips:\n";	
+	echo "Node ".$nNodeID." has IPs:\n";	
 
 	foreach($arrNodeIPs as $objIP)
 	{
