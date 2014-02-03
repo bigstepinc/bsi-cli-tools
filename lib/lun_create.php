@@ -13,7 +13,7 @@ $objLUN=array(
 	"lun_label"=>$argv[2],
 	"lun_bootable"=>false,
 	"lun_boot_order"=>0,
-	"lun_size_mbytes"=>$argv[3]
+	"lun_size_mbytes"=>(int)$argv[3]
 );
 
 $objLUN=$bsi->lun_create($nInfrastructureID,$objLUN);

@@ -613,6 +613,13 @@ class BSI extends JSONRPC_client
 		return $this->_rpc(__FUNCTION__, func_get_args());
 	}
 
+	public function cluster_interface_detach($nClusterID, $nClusterInterfaceIndex)
+	{
+		return $this->_rpc(__FUNCTION__, func_get_args());
+	}
+
+
+
 	public function resource_utilization_summary($nUserIDBillable, $strStartTimestamp, $strEndTimestamp, $arrInfrastructureIDs=NULL)
 	{
 		return $this->_rpc(__FUNCTION__, func_get_args());

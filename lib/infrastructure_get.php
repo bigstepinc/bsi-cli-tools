@@ -20,7 +20,7 @@ try
 
 echo "Infrastructure ".$arrInfrastructure['infrastructure_label']."(".$arrInfrastructure['infrastructure_id'].")\n";
 echo "Description: ".$arrInfrastructure['infrastructure_description']."\n";
-echo "Pending operations count:".$arrInfrastructure['infrastructure_ongoing_deployments_counter']."\n";
+echo "Ongoing Deployments Counter:".$arrInfrastructure['infrastructure_ongoing_deployments_counter']."\n";
 
 
 //CLUSTERS
