@@ -30,6 +30,7 @@ $arrCommands=array(
 		"infrastructure_user_remove"=>	"Removes a delegate user from an infrastructure.",
 		"lan_create"=>			"Create a LAN network inside an infrastructure.",
 		"lun_attach_to_node"=>		"Attach a LUN to a node.",
+		"lun_detach_from_node"=>	"Detach LUN from a node.",
 		"lun_clone"=>			"Clone a LUN to make a replica of it. This will also create a snapshot and the original LUN will no longer be deletable unless all clones are deleted.",
 		"lun_create"=>			"Create a LUN of a specified size either empty block device or by cloning a template.",
 		"lun_delete"=>			"Deletes a LUN",

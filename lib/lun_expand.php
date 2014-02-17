@@ -7,7 +7,7 @@ require_once("config.php");
 global $bsi;
 
 if($argc!=3)
-	die("Syntax: <lun_id> <new_size>\n");
+	die("Syntax: <lun_id> <new_size_mbytes>\n");
 
 
 

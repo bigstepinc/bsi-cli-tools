@@ -89,6 +89,8 @@ printf("%5s %-40s %3s\n",'ID','Name','Type','Status');
  {
 		if($objElement['network_type']=='wan' || $objElement['network_type']=='san')
 			continue;
+		if($objElement['network_service_status']==BSI::SERVICE_STATUS_DELETED)
+                	continue;
 		echo "Deleting network ".$objElement['network_id']." ". $objElement['network_label']."\n";	
 		$bsi->network_delete($objElement['network_id']);
  }
@@ -126,6 +128,8 @@ printf("%5s %-40s %3s %10s %20s %10s %10s %4s %5s\n", 'ID', 'Name', 'Type', 'Des
 
 foreach($arrObjects['rows'] as $objElement)
 {
+	 if($objElement['ippool_service_status']==BSI::SERVICE_STATUS_DELETED)
+                        continue;
 
 	echo "Deleting ippool ".$objElement['ippool_id']." ".$objElement['ippool_label']."\n";
 	$bsi->ippool_delete($objElement['ippool_id']);
@@ -167,6 +171,8 @@ printf("%5s %5s %10s %-3s %-5s %10s\n",'ID','NodeId','Size(MB)','Bootable','Stor
  
 foreach($arrObjects['rows'] as $objElement)
  {
+		 if($objElement['lun_service_status']==BSI::SERVICE_STATUS_DELETED)
+                        continue;
 		echo "Deleting LUN ".$objElement['lun_id']."\n";
 		$bsi->lun_delete($objElement['lun_id']);
  }
