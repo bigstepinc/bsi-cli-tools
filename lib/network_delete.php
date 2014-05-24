@@ -1,6 +1,6 @@
 <?php
 
-if($argc!=4)
+if($argc!=2)
 	die("Syntax:  <network_id>\n");
 
 $nNetworkID=$argv[1];
@@ -10,10 +10,6 @@ $nNetworkID=$argv[1];
 */
 require_once("config.php");
 
-;
-
-$objLANNetwork = $bsi->network_delete($nNetworkId);
-
-var_export($objNetwork);
+$bsi->network_delete($nNetworkID);
 
 echo "\n Don't forget you need to run infrastructure_deploy for the actual deployment\n";
