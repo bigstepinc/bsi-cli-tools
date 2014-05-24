@@ -38,6 +38,7 @@ $arrCommands=array(
 		"lun_snapshots"=>		"Retrieves the snapshots associated with a LUN.",
 		"lun_templates_get"=>		"Retrieves all the templates of a LUN.",
 		"network_create"=>		"Creates a network.",
+		"network_delete"=>		"Delete a network.",
 		"node_get"=>			"Retrieves information about a node.",
 		"node_power_get"=>		"Retrieves the power status of a node.",
 		"node_power_off"=>		"Powers off a node.",

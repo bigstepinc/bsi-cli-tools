@@ -12,8 +12,10 @@ require_once("config.php");
 
 
 $objNetwork = array(
+	"infrastructure_id" =>(int) $argv[1],
 	"network_label" => $argv[2],
 	"network_type" => $argv[3],
+	"network_id_name" => $argv[3],
 );
 
 $objLANNetwork = $bsi->network_create($nInfrastructureID,$objNetwork);
