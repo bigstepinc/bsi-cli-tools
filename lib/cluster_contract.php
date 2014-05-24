@@ -5,11 +5,12 @@
 require_once("config.php");
 $nBillableUserID = 16;
 
-if($argc!=2)
+if($argc!=3)
 	die("Syntax:  <cluster_id> <new_node_count>\n");
 
 
-$nClusterID=$argv[1];
+$nClusterID=(int)$argv[1];
+$nNodeCount=(int)$argv[2];
 
 global $bsi;
 
@@ -17,6 +18,7 @@ global $bsi;
 $objCluster = $bsi->cluster_get($nClusterID);
 
 unset($objCluster['current_operation']);
+
 if($objCluster['cluster_node_count']<=$nNodeCount)
 	die("new_node_count must be smaller than the current node count which is currently ".$objCluster['cluster_node_count']."\n");
 
