@@ -8,7 +8,6 @@ python 2.7.x or newer
 
 Cli tools to use Bigstep Infrastructure from the command line. 
 
-PHP is needed to run this tool set. 
 Also BSI_ENDPOINT_URL and BSI_API_KEY environment variables need to be set before anything can be done with this tool set. 
 
 Usage:
@@ -39,7 +38,6 @@ networks                       Retrieve network(s) details
 node_server_power_get          Get power status of a node's server                                                                 
 node_server_power_set          Set power status of a node's server via ipmi  
 
-(the list of commands is not yet finalised)
 
 
 
