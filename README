@@ -16,8 +16,6 @@ http://ctrl.bigstep.com/ at the API section.
 Usage:
 ./bsi <command>
 
-Available commands:
-=================
 BSI CLI Tools.
 =============
 
@@ -30,17 +28,21 @@ ansible_inventory              Generate an ansible inventory file
 cluster_create                 Create a new cluster                                                                                
 cluster_delete                 Delete a cluster                                                                                    
 cluster_edit                   Edit an existing cluster                                                                            
-cluster_nodes                  Get details about the nodes of a cluster.                                                           
+cluster_instances              Get details about the instances of a cluster.                                                       
 clusters                       Retrieve cluster(s)                                                                                 
 infrastructure_create          Create new infrastructure                                                                           
 infrastructure_deploy          Deploy ordered changes to an infrastructure                                                         
 infrastructures                Retrieve infrastructure(s)                                                                          
+instance_server_power_get      Get power status of a instance's server                                                             
+instance_server_power_set      Set power status of a instance's server via ipmi                                                    
 lun_array_luns                 Retrive luns of a cluster                                                                           
 lun_templates                  Retrieve a list of public and private templates                                                     
-networks                       Retrieve network(s) details                                                                         
-node_server_power_get          Get power status of a node's server                                                                 
-node_server_power_set          Set power status of a node's server via ipmi  
+networks                       Retrieve network(s) details     
 
 
+EXAMPLE
+========
+To create a cluster with 10 nodes, each with 128GB of RAM and 10 cores at 3Ghz using Centos and a LUN of 40GB use:
+./bsi cluster_create -i test -l test-from-api -n 1 -r 128 -p 2 -m 3000 -c 10 -t CentOS6.5 -s 40000
 
 
