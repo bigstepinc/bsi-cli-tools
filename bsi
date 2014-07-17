@@ -1,6 +1,6 @@
 #/bin/bash
 #BSI CLI Tools. Bigstep LTD all rights reserved.
-#version 0.1
+#version 1.0
 
 
 CDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -18,9 +18,9 @@ if [ ! -d $LIB ]; then
 fi
 
 
-PHP_PATH=`which php`
-if [ -z $PHP_PATH ]; then
-	echo "PHP must be installed to run the CLI tools. We use \"which php\" to look for it.". 
+PYTHON_PATH=`which python`
+if [ -z $PYTHON_PATH ]; then
+	echo "Python must be installed to run the CLI tools. We use \"which python\" to look for it.". 
 	exit 2;
 fi
 
@@ -31,14 +31,14 @@ if [ -z $CMD ]; then
 	CMD="help"
 fi
 
-EXP_CMD=$LIB/$CMD.php
+EXP_CMD=$LIB/$CMD.py
 
 if [ ! -f $EXP_CMD ]; then
 	echo "Command $CMD not found. Use $0 help for available commands.";
 	exit 3;
 fi
 
-$PHP_PATH $EXP_CMD $2 $3 $4 $5 $6 $7 $8 $9
+$PYTHON_PATH $EXP_CMD "$@" 
 
 
 

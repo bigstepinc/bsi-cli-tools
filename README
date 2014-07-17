@@ -1,7 +1,10 @@
 BSI CLI TOOLS
 ==============
 
-Version 0.9 (BETA)
+Version 1.0 
+
+Requirements:
+python 2.7.x or newer
 
 Cli tools to use Bigstep Infrastructure from the command line. 
 
@@ -13,155 +16,30 @@ Usage:
 
 Available commands:
 =================
-cluster_create              Create a cluster with a number of nodes with a specific configuration.
-cluster_contract            Contract a cluster (i.e. reduce the number of nodes).
-cluster_delete              Delete a cluster (keep the LUNS) to free resources.
-cluster_expand              Expand a cluster (i.e. increase the number of nodes).
-cluster_get                 Returns an description of a cluster.
-cluster_get_ips             Returns the ips used by a cluster.
-cluster_nodes               Returns the nodes contained by a cluster.
-cluster_servers             Returns the servers used by the nodes of a cluster.
-cluster_start               Starts a cluster from a stopped state.
-cluster_stop                Stopps a cluster to free resources. Use it to restore it's state at a later time
-infrastructure_clear        Deletes everything that can be deleted from an infrastructure.
-infrastructure_create       Creates a new infrastructure. This infrastructure comes with associated WAN and SAN networks
-infrastructure_deploy       Deployes the registered changes. Tp be used to start any operation registered. Use after any create, edit, delete command.
-infrastructure_get          Retrieves information about the clusters, networks and LUNS of an infrastructure.
-infrastructure_user_add     Adds a new user. The user will be an admin user but will not have any right. Use infrastructure_user_add to add it as a delegate to a specific infrastructure.
-infrastructure_user_remove  Removes a delegate user from an infrastructure.
-lan_create                  Create a LAN network inside an infrastructure.
-lun_attach_to_node          Attach a LUN to a node.
-lun_clone                   Clone a LUN to make a replica of it. This will also create a snapshot and the original LUN will no longer be deletable unless all clones are deleted.
-lun_create                  Create a LUN of a specified size either empty block device or by cloning a template.
-lun_delete                  Deletes a LUN
-lun_expand                  Expand a LUN. This will expand the LUN on the storage device so that it has another size. It will also atempt to expand the FS on it using parted.
-lun_get                     Displayes information about a LUN.
-lun_snapshots               Retrieves the snapshots associated with a LUN.
-lun_templates_get           Retrieves all the templates of a LUN.
-network_create              Creates a network.
-node_get                    Retrieves information about a node.
-node_power_get              Retrieves the power status of a node.
-node_power_off              Powers off a node.
-node_power_on               Powers on a node.
-resource_utilizations       Retrieves the resource utilization of a node
-snapshot_create             Create snapshot of a LUN
-snapshot_revert             Reverts a LUN to a snapshot.
-user_get                    Retrieves data about a user.
-user_infrastructures        Retrieves all infrastructures to which the user is a delegate.
-user_ssh_key_upload         Set the PUBLIC SSH key to be configured on all servers and devices provisioned by the sistem for the current user.
+BSI CLI Tools.
+=============
 
-===================
-Example Usage
-==================
-To create a cluster with one node: 
+Bigstep Infrastructure CLI Tools to control the infrastructure. 
+Syntax: bsi <command> [command params]
 
-### Create the infrastructure
-# All assets are grouped into an infrastructure. A user can have multple infrastructures
-#
-#
+Available commands:
 
-:~/code/bsi-cli-tools $ ./bsi infrastructure_create test
-array (
-  'infrastructure_id' => 68,
-  'user_id_owner' => 2,
-  'infrastructure_label' => 'test',
-  'infrastructure_description' => '',
-  'infrastructure_ongoing_deployments_counter' => 0,
-)
+ansible_inventory              Generate an ansible inventory file                                                                  
+cluster_create                 Create a new cluster                                                                                
+cluster_delete                 Delete a cluster                                                                                    
+cluster_edit                   Edit an existing cluster                                                                            
+cluster_nodes                  Get details about the nodes of a cluster.                                                           
+clusters                       Retrieve cluster(s)                                                                                 
+infrastructure_create          Create new infrastructure                                                                           
+infrastructure_deploy          Deploy ordered changes to an infrastructure                                                         
+infrastructures                Retrieve infrastructure(s)                                                                          
+lun_array_luns                 Retrive luns of a cluster                                                                           
+lun_templates                  Retrieve a list of public and private templates                                                     
+networks                       Retrieve network(s) details                                                                         
+node_server_power_get          Get power status of a node's server                                                                 
+node_server_power_set          Set power status of a node's server via ipmi  
 
-### Create a cluster for a single node with: 
-# ProLiant DL320e Gen8 Intel(R) Xeon(R) CPU E3-1230 V2 @ 3.30GHz 16GB RAM 3,300Mhz
-# Use Ubuntu 12 LTS template (the only one available at this time)
-# A cluster has multple nodes and an infrastructure can hold multiple clusters that are connected by networks. 
-#
+(the list of commands is not yet finalised)
 
 
-:~/code/bsi-cli-tools $ ./bsi cluster_create 68 test_cluster 1 16 3300 1 4 ubuntu_12_LTS 
-array (
-  'cluster_id' => NULL,
-  'cluster_label' => 'test_cluster',
-  'cluster_ipv4_public_auto_create_and_allocate' => true,
-  'cluster_node_count' => 1,
-  'cluster_ram_gbytes' => 16,
-  'cluster_processor_core_mhz' => 3300,
-  'cluster_processor_count' => 1,
-  'cluster_processor_core_count' => 4,
-  'lun_template_id' => 2,
-  'lun_storage_type' => 'iscsi_ssd',
-)array (
-  'cluster_id' => 44,
-  'cluster_id_name' => 'cluster_44',
-  'lun_template_id' => 2,
-  'lun_storage_type' => 'iscsi_ssd',
-  'cluster_label' => 'test_cluster',
-  'cluster_node_count' => 1,
-  'cluster_ipv4_public_auto_create_and_allocate' => true,
-  'cluster_ram_gbytes' => 16,
-  'cluster_processor_count' => 1,
-  'cluster_processor_core_mhz' => 3300,
-  'cluster_processor_core_count' => 4,
-  'infrastructure_id' => 68,
-  'cluster_service_status' => 'ordered',
-  'cluster_type' => 'server',
-  'current_operation' => 
-  array (
-    'cluster_id' => 44,
-    'lun_template_id' => 2,
-    'lun_storage_type' => 'iscsi_ssd',
-    'cluster_configuration_name' => NULL,
-    'cluster_node_count' => 1,
-    'cluster_ipv4_public_auto_create_and_allocate' => true,
-    'cluster_ram_gbytes' => 16,
-    'cluster_processor_count' => 1,
-    'cluster_processor_core_mhz' => 3300,
-    'cluster_processor_core_count' => 4,
-    'cluster_change_operation_type' => 'create',
-    'cluster_change_deploy_status' => 'not_started',
-  ),
-)
- Don't forget you need to run infrastructure_deploy for the actual deployment
 
-
-### Initialize provisioning.
-# Provisioning is done asyncronously but only after a deploy call. 
-# This allows the user to design the infrastructure before it is actually provisioned so that the entire operation set can be done in one sweep
-#
-
-
-~/code/bsi-cli-tools $ ./bsi infrastructure_deploy 68
-Deploying changes
-array (
-  'infrastructure_id' => 68,
-  'user_id_owner' => 2,
-  'infrastructure_label' => 'test',
-  'infrastructure_description' => '',
-  'infrastructure_ongoing_deployments_counter' => 0,
-)
-
-
-Check status of provisioning operations
-
-:~/code/bsi-cli-tools $ ./bsi infrastructure_get 68
-Infrastructure test(68)
-Description: 
-Pending operations cound:6
-
-CLUSTERS:
- ID Name                 NodeCount NodeCharacteristics                                Networks                           Status
- 44 test_cluster         1          1 x (3300Mhz, 4 Cores) CPU, 16GB RAM SAN                               ordered
-
-NETWORKS:
-   ID Name                                     Type
-  136 WAN                                      wan       
-  137 SAN                                      san       
-
-IPPools:
-   ID Name                                     Type Destination                Range    Gateway    Netmask NetworkID Status
-  187 BSI public IPv6 /64                       ipv6   wan           -                                   136 ordered
-  188 BSI public IPv4 /28                       ipv4   wan           -                                   136 ordered
-  189 san_1                                     ipv4   san 100.64.0.148-100.64.0.151 100.64.0.149 255.255.255.252   137 active
-
-LUNS:
-   ID NodeId   Size(MB) Bootable StorageType     Status
-   65    70      40960 Yes active 
-========
